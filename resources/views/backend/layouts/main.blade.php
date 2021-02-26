@@ -22,6 +22,8 @@
     <!-- AdminLTE Skins. Choose a skin from the css/skins
          folder instead of downloading all of them to reduce the load. -->
     <link rel="stylesheet" href="/backend/dist/css/skins/_all-skins.min.css">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.css">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -259,6 +261,86 @@
 <script src="/backend/dist/js/demo.js"></script>
 
 <script src="/backend/js/main.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+<script>
+  $( function() {
+    $( "#datepicker" ).datepicker({
+        dateFormat: "yy-mm-dd"
+    });
+    $( "#datepicker2" ).datepicker({
+        dateFormat: "yy-mm-dd"
+    });
+  } );
+</script>
+
+<script>
+    $(document).ready(function(){
+        
+        chart365daysorder();
+
+        var chart = new Morris.Line({           
+            element: 'chart',       
+            
+            lineColors: ['#819C79', '#fc8710', '#ff6541', '#A4ADD3', '#766b56'],
+            parseTime: false,
+            hideHover: 'auto',
+
+            xkey: 'period',
+            ykeys: ['order', 'sales', 'profit', 'quantity'],
+                      
+            labels: ['đơn hàng', 'doanh số', 'lợi nhuận', 'số lượng']
+        });
+
+        function chart365daysorder(){
+            var _token = $('input[name="_token"]').val();
+            $.ajax({
+                url: "{{route('days-order')}}",
+                method: "POST",
+                dataType: "JSON",
+                data:{_token:_token},
+
+                success:function(data){
+                    chart.setData(data);
+                }
+            });
+        }
+
+        $('.dashboard-filter').change(function(){
+            var dashboard_value = $(this).val();
+            var _token = $('input[name="_token"]').val();
+
+            $.ajax({
+                url: "{{route('dashboard-filter')}}",
+                method: "POST",
+                dataType: "JSON",
+                data: {dashboard_value: dashboard_value, _token:_token},
+
+                success:function(data){
+                    chart.setData(data);
+                }
+            });
+        })
+
+        $('#btn-dashboard-filter').click(function(){
+            var _token = $('input[name="_token"]').val();
+            var from_date = $('#datepicker').val();  
+            var to_date = $('#datepicker2').val(); 
+            
+            $.ajax({
+                url:"{{route('filter-by-date')}}",
+                method: "POST",
+                dataType: "JSON",
+                data:{from_date: from_date, to_date:to_date, _token:_token},
+
+                success: function(data){
+                    chart.setData(data);
+                }
+            });
+        })
+    });
+</script>
 
 @yield('script')
 

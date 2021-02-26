@@ -60,6 +60,7 @@ Route::post('/admin/login', 'AdminController@postLogin')->name('admin.postLogin'
 Route::get('/admin/logout', 'AdminController@logout')->name('admin.logout');
 
 Route::group(['prefix' => 'admin', 'as' => 'admin.','middleware' => 'checkLogin'],function (){
+    Route::get('dashboard', 'AdminController@dashboard')->name('dashboard');
     Route::resource('banner', 'BannerController');
     Route::resource('category', 'CategoryController');
     Route::resource('product', 'ProductController');
@@ -77,6 +78,8 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.','middleware' => 'checkLogin'
 
 Route::resource('home', 'HomeController');
 
-
+Route::post('/admin/filter-by-date', 'AdminController@filter_by_date')->name('filter-by-date');
+Route::post('/admin/days-order', 'AdminController@days_order')->name('days-order');
+Route::post('/admin/dashboard-filter', 'AdminController@dashboard_filter')->name('dashboard-filter');
 
 

@@ -87,6 +87,8 @@ class ShopController extends GeneralController
 
     public function detailProduct($slug){
         $product = Product::where(['is_active' => 1,'slug' => $slug])->first();
+        $product->views +=1;
+        $product->save();
 
         $sameProducts= Product::where(['is_active'=>1],['is_hot'=>1])
             ->limit(4)
@@ -198,9 +200,12 @@ class ShopController extends GeneralController
             'slug' => $slug,
             'is_active' => '1'
         ])->first();
+        $article->views = $article->views +1;
+        $article->save();
 //        if(!$article){
 //            return view('errors.404');
 //        }
+        
         return view('frontend.article.article_detail',[
             'article' => $article
         ]);

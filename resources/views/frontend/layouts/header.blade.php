@@ -44,6 +44,7 @@
                         @endforeach
                     </div>
                 </li>
+                
                 <li class="nav-item active"><a href="{{ route('shop.about') }}" class="nav-link" style="font-weight: 600;font-size: 14px">Giới thiệu</a></li>
                 <li class="nav-item active"><a href="{{ route('shop.article') }}" class="nav-link" style="font-weight: 600;font-size: 14px">Tin tức</a></li>
                 <li class="nav-item active"><a href="{{ route('shop.contact') }}" class="nav-link" style="font-weight: 600;font-size: 14px">Liên hệ</a></li>

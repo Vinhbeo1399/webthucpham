@@ -26,7 +26,7 @@
         <ul class="sidebar-menu" data-widget="tree">
             <li class="header">MAIN NAVIGATION</li>
             <li class="treeview">
-                <a href="#">
+                <a href="{{route('admin.dashboard')}}">
                     <i class="fa fa-dashboard"></i><span>Bảng điều khiển</span>
                 </a>
             </li>

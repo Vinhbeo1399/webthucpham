@@ -5,6 +5,9 @@ namespace App\Providers;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 use Cart;
+use App\Product;
+use App\Article;
+use App\Order;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -15,7 +18,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-
+        //
     }
 
     /**
