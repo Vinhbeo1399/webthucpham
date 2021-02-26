@@ -133,7 +133,7 @@ class CartController extends GeneralController
           
                 // Xóa thông tin giỏ hàng Hiện tại sau khi đặt hàng thành công
                 Cart::destroy();
-                
+                session(['totalItem' => Cart::count()]);
                 return redirect()->route('shop.cart.completedOrder')->with('msg', 'Cảm ơn bạn đã đặt hàng. Mã đơn hàng của bạn : #'.$order->code);
             }
 
