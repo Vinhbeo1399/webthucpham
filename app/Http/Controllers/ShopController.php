@@ -35,9 +35,9 @@ class ShopController extends GeneralController
         ])->orderBy('position', 'ASC')->get();
         $brands = Brand::where('is_active', 1)->get();
 //        dd($hotProducts);
-
+        $count_item = Cart::count();
         return view('frontend.index', [
-            //'cart' => $cart,
+            'count_in_cart' => $count_item,
             'banners' => $banners,
             'hotProducts' => $hotProducts,
             'categories' => $categories,

@@ -64,7 +64,7 @@
                                     </td>
                                     <td>{{ $item->phone }}</td>
                                     <td>{{ $item->email }}</td>
-                                    <td class="price">{{ number_format($item->total) }}000 đ</td>
+                                    <td class="price">{{ number_format($item->total) }} đ</td>
                                     <td>
                                         <a href="{{route('admin.order.edit', ['id'=> $item->id ])}}">
                                             <span title="Edit" type="button" class="btn btn-flat btn-primary">Chi tiết</span>

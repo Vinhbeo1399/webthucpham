@@ -60,7 +60,7 @@ class CartController extends GeneralController
     {
         // remove session
         Cart::destroy();
-
+        session(['totalItem' => Cart::count()]);
         return redirect('/');
     }
 
@@ -98,8 +98,9 @@ class CartController extends GeneralController
 
         $cart = Cart::content();
         $totalCount = Cart::count();
-        $totalPrice = Cart::total(0,",","."); // lấy tổng giá của sản phẩm
-
+        
+        $totalPrice = Cart::total(0,",",""); // lấy tổng giá của sản phẩm
+        // dd($totalPrice);
         // Kiểm tra tồn tại giỏ hàng cũ
         try {
             // Lưu vào bảng đơn đặt hàng - orders
@@ -132,7 +133,7 @@ class CartController extends GeneralController
           
                 // Xóa thông tin giỏ hàng Hiện tại sau khi đặt hàng thành công
                 Cart::destroy();
-
+                
                 return redirect()->route('shop.cart.completedOrder')->with('msg', 'Cảm ơn bạn đã đặt hàng. Mã đơn hàng của bạn : #'.$order->code);
             }
 
@@ -153,6 +154,7 @@ class CartController extends GeneralController
         $cart = Cart::content();
         $totalPrice = Cart::total(0,",","."); // lấy tổng giá của sản phẩm
         session(['totalItem' => Cart::count()]);
+        
         return view('frontend.components.cart', [
             'cart' => $cart,
             'totalPrice' => $totalPrice
