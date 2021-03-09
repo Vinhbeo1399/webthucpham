@@ -9,7 +9,7 @@
                 font-weight: bold;
             }
         </style>
-    
+
         <div class="row">
             <p class="title_thongke">Thống kê doanh số bán hàng</p>
             <form autocomplete="off">
@@ -18,7 +18,7 @@
                     <p>Từ ngày: <input type="text" id="datepicker" class="form-control"></p>
                     <input type="button" id="btn-dashboard-filter" class="btn btn-primary btn-sm" value="Lọc kết quả">
                 </div>
-                
+
                 <div class="col-md-2">
                     <p>Đến ngày: <input type="text" id="datepicker2" class="form-control"></p>
                 </div>
@@ -34,36 +34,36 @@
                         </select>
                     </p>
                 </div>
-  
+
             </form>
             <div class="col-md-12">
                 <div id="chart" style="height: 250px;"></div>
             </div>
         </div>
-
-        <div class="row">
-            <p class="title_thongke">Thống kê truy cập</p>
-            <table class="table table-bordered" style="background-color: rgb(211, 210, 210)">
-                <thead>
-                    <tr>
-                        <th scope="col">Đang online</th>
-                        <th scope="col">Tổng tháng trước</th>
-                        <th scope="col">Tổng tháng này</th>
-                        <th scope="col">Tổng một năm</th>
-                        <th scope="col">Tổng truy cập</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>24</td>
-                        <td>14</td>
-                        <td>50</td>
-                        <td>87</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
+<br>
+{{--        <div class="row">--}}
+{{--            <p class="title_thongke">Thống kê truy cập</p>--}}
+{{--            <table class="table table-bordered" style="background-color: rgb(211, 210, 210)">--}}
+{{--                <thead>--}}
+{{--                    <tr>--}}
+{{--                        <th scope="col">Đang online</th>--}}
+{{--                        <th scope="col">Tổng tháng trước</th>--}}
+{{--                        <th scope="col">Tổng tháng này</th>--}}
+{{--                        <th scope="col">Tổng một năm</th>--}}
+{{--                        <th scope="col">Tổng truy cập</th>--}}
+{{--                    </tr>--}}
+{{--                </thead>--}}
+{{--                <tbody>--}}
+{{--                    <tr>--}}
+{{--                        <td>1</td>--}}
+{{--                        <td>24</td>--}}
+{{--                        <td>14</td>--}}
+{{--                        <td>50</td>--}}
+{{--                        <td>87</td>--}}
+{{--                    </tr>--}}
+{{--                </tbody>--}}
+{{--            </table>--}}
+{{--        </div>--}}
 
         <div class="row">
             <div class="col-md-4 col-xs-12">
@@ -90,7 +90,7 @@
                     @endforeach
                 </ol>
             </div>
-            
+
         </div>
     </div>
 @endsection
@@ -104,7 +104,7 @@
             '#15C221',
             '#BF9C28',
             '#80DEEA',
-            
+
         ],
         //labelColor:"#cccccc", // text color
         //backgroundColor: '#333333', // border color
@@ -112,7 +112,7 @@
             {label:"Sản phẩm", value:{{$product}}},
             {label:"Bài viết", value:{{$article}}},
             {label:"Đơn hàng", value:{{$order}}}
-            
+
         ]
         });
     });

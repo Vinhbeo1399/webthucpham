@@ -32,7 +32,8 @@
                                 <th>Giá Gốc</th>
                                 <th>Giá KM</th>
                                 <th>Vị trí</th>
-                                <th>Sản phẩm hot</th>
+                                <th>Số lượng</th>
+                                <th>Ngày nhập</th>
                                 <th>Trạng thái</th>
                                 <th class="text-center">Hành động</th>
                             </tr>
@@ -53,7 +54,8 @@
                                         <td>{{ $item->price }}</td>
                                         <td>{{ $item->sale }}</td>
                                         <td>{{ $item->position }}</td>
-                                        <td>{{ $item->is_hot == 1 ? 'Có' : 'Không' }}</td>
+                                        <td>{{ $item->stock }}</td>
+                                        <td>{{ $item->updated_at }}</td>
                                         <td>{{ $item->is_active == 1 ? 'Hiển thị' : 'Ẩn' }}</td>
                                         <td class="text-center">
                                             <a href="{{ route('admin.product.edit', ['id' => $item->id ]) }}" class="btn btn-flat bg-purple">

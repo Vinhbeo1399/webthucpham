@@ -62,6 +62,7 @@
                                     <td><label>SĐT :</label> </td>
                                     <td>{{ $order->phone }}</td>
                                     <td><label>Tạm tính</label></td>
+                                    <?php //dd($order->total); ?>
                                     <td>{{ number_format($order->total) }}</td>
                                 </tr>
                                 <tr>

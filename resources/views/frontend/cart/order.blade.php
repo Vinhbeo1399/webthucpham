@@ -69,6 +69,28 @@
                                     </div>
                                     <div class="col-md-12">
                                         <div class="cart-detail p-3 p-md-4">
+                                            <h3 class="billing-heading mb-4">Phương thức thanh toán</h3>
+                                            <div class="form-group">
+                                                <div class="col-md-12">
+                                                    <div class="radio">
+                                                        <label><input type="radio" name="optradio" class="mr-2"> Ship COD</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="col-md-12">
+                                                    <div class="radio">
+                                                        <label><input type="radio" name="optradio" class="mr-2"> Chuyển khoản</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="col-md-12">
+                                                    <div class="radio">
+                                                        <label><input type="radio" name="optradio" class="mr-2"> Ví Điện tử</label>
+                                                    </div>
+                                                </div>
+                                            </div>
                                             <div class="form-group">
                                                 <div class="col-md-12">
                                                     <div class="checkbox">
@@ -107,6 +129,7 @@
                                         </a>
                                     </p>
                                 </div>
+
                             </div>
                         </div> <!-- .col-md-8 -->
                     @else
