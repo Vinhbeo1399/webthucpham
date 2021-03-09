@@ -33,7 +33,7 @@
                                         <i class="ion-ios-remove"></i>
                                     </button>
                                 </span>
-                                <input type="text" id="quantity" name="quantity" class="form-control input-number" value="1" min="1" max="100">
+                                <input type="number" id="quantity" name="quantity" class="form-control input-number" value="1" min="1" max="{{$product->stock}}" required>
                                 <input type="hidden" id="id_product" name="id_product" value="{{$product->id}}">
                                 <span class="input-group-btn ml-2">
                                     <button type="button" class="quantity-right-plus btn" data-type="plus" data-field="">
@@ -51,9 +51,15 @@
 {{--                                @endif--}}
                             </div>
                         </div>
+                        @if($product->stock > 0)
                         <p class="d-flex">
                             <button type="submit">Thêm vào giỏ hàng</button>
                         </p>
+                        @else
+                        <p class="d-flex">
+                            Sản phẩm đã hết hàng, xin vui lòng chọn sản phẩm khác để mua.
+                        </p>
+                        @endif
                     </div>
                 </div>
             </form>
@@ -175,3 +181,16 @@
     </body>
     </html>
 @endsection
+<style>
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+</style>

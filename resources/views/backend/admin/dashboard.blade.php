@@ -66,11 +66,11 @@
 {{--        </div>--}}
 
         <div class="row">
-            <div class="col-md-4 col-xs-12">
+            <div class="col-md-3 col-xs-12">
                 <p class="title_thongke">Thống kê tổng sản phẩm, bài viết, đơn hàng</p>
                 <div id="donut" class="morris-donut-inverse"></div>
             </div>
-            <div class="col-md-4 col-xs-12" >
+            <div class="col-md-3 col-xs-12" >
                 <p class="title_thongke">Sản phẩm xem nhiều</p>
                 <ol class="block-20" style="margin-left: 10%">
                     @foreach ($product_view as $item)
@@ -80,12 +80,22 @@
                     @endforeach
                 </ol>
             </div>
-            <div class="col-md-4 col-xs-12">
+            <div class="col-md-3 col-xs-12">
                 <p class="title_thongke">Bài viết xem nhiều</p>
                 <ol class="block-20">
                     @foreach ($article_view as $item)
                     <li>
                         <a href="{{ route('shop.articleDetail.detail',['slug' => $item->slug, 'id'=>$item->id]) }}" target="_blank">{{$item->title}}  <span style="color: black">| {{$item->views}}</a>
+                    </li>
+                    @endforeach
+                </ol>
+            </div>
+            <div class="col-md-3 col-xs-12">
+                <p class="title_thongke">Sản phẩm bán chạy</p>
+                <ol class="block-20">
+                    @foreach ($solded as $item)
+                    <li>
+                        <span style="color: #43AEDE"> {{$item['name']}} </span> <span style="color: black">| {{$item['solded']}}</span>
                     </li>
                     @endforeach
                 </ol>

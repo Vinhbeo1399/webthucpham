@@ -9,6 +9,7 @@ use Carbon\Carbon;
 use App\Product;
 use App\Article;
 use App\Order;
+use App\OrderDetail;
 
 class AdminController extends Controller
 {
@@ -54,7 +55,16 @@ class AdminController extends Controller
         $order = Order::all()->count();
         $article_view = Article::orderBy('views','DESC')->take(20)->get();
         $product_view = Product::orderBy('views','DESC')->take(20)->get();
-        return view('backend.admin.dashboard')->with(compact('product', 'article', 'order','article_view','product_view'));
+        $pro_name = OrderDetail::groupBy('name')->get()->toArray();
+        foreach ($pro_name as $key => $value) {
+            $solded[] = [
+                'solded' => OrderDetail::where('name', $value['name'])->sum('qty'),
+                'name' => $value['name']
+            ];
+        }
+        arsort($solded);
+        
+        return view('backend.admin.dashboard')->with(compact('product', 'article', 'order','article_view','product_view','solded'));
     }
 
     public function filter_by_date(Request $request){

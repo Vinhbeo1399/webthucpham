@@ -40,7 +40,7 @@
 
                                     <td class="quantity">
                                         <div class="input-group mb-3">
-                                            <input name="qty" class="quantity form-control input-number d-block item-qty" value="{{ $item->qty }}" >
+                                            <input type="number" name="qty" class="quantity form-control input-number d-block item-qty" value="{{ $item->qty }}" min="0" max="" >
                                         </div>
                                         <a data-id="{{ $item->rowId }}" href="javascript:void(0)" class="update-qty">Cập nhật</a>
                                     </td>
@@ -160,3 +160,16 @@
     <a href="/" class="buyother"><i class="fa fa-chevron-left"></i> Về trang chủ</a>
     
 @endif
+<style>
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+</style>

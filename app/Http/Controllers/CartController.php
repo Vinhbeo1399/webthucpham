@@ -95,10 +95,16 @@ class CartController extends GeneralController
             'email' => 'required|email',
             'address' => 'required',
         ]);
-
+        
         $cart = Cart::content();
         $totalCount = Cart::count();
-
+        foreach ($cart as $key => $value) {
+            // dd($value);
+            $product = Product::findOrFail($value->id);
+            $product->stock = $product->stock - $value->qty;
+            $product->save();
+        }
+        
         $totalPrice = Cart::total(0,",",""); // lấy tổng giá của sản phẩm
         // dd($totalPrice);
         // Kiểm tra tồn tại giỏ hàng cũ
